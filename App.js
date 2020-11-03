@@ -1,47 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+
+import { Main } from './Screens/Main'
 
 export default function App() {
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.timerNums}>00:02</Text>
-      <TouchableOpacity style={styles.btn} onPress={() => alert('ok')}>
-        <Text style={styles.textBtn}>Start!</Text>
-      </TouchableOpacity>
+    <View style={styles.global}>
+      <Main />
     </View>
-  );
+  )
 }
 
-const screen = Dimensions.get('screen')
-
 const styles = StyleSheet.create({
+  global: {
+    backgroundColor: '#F4F1FA',
+    height: '100%'
+  },
   container: {
-    backgroundColor: 'black',
     height: '100%',
-    alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 24
-  },
-  btn: {
-    width: 100, 
-    height: 100,
-    backgroundColor: 'red',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: screen.width / 2,
-    borderWidth: 3,
-    borderColor: '#fff'
-  },
-  textBtn: {
-    color: '#fff',
-    fontWeight: 'bold'
-  },
-  timerNums: {
-    color: '#fff',
-    fontSize: 64
-  },
-
-
+    
+  }
 })
