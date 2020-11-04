@@ -1,38 +1,23 @@
 import React, { useState } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
 export const UpMenu = () => {
-
-  const [menu, setMenu] = useState([
-    {
-      active: true
-    },
-    {
-      active: false
-    },
-    {
-      active: false
-    }
-  ])
 
   return (
     <View style={s.container}>
       <Text>
         Меню пользователя
-      </Text> 
+      </Text>
 
       <View style={s.menuWrapper}>
-        {
-          menu.map((item, index) => {
-            const active = item.active ? s.active : null
-            return (
-              <View key={index} style={[ s.menuItem,  active  ]}>
-              </View>
-            )   
-          })
 
-        }
-      
+        <TouchableOpacity style={[s.menuItem, s.active]}>
+        </TouchableOpacity>
+        <TouchableOpacity style={[s.menuItem]}>
+        </TouchableOpacity>
+        <TouchableOpacity style={[s.menuItem]}>
+        </TouchableOpacity>
+
       </View>
     </View>
   )
@@ -45,11 +30,11 @@ const s = new StyleSheet.create({
   menuWrapper: {
     flexDirection: 'row'
   },
-  menuItem : {
+  menuItem: {
     width: 52,
     height: 52,
     borderRadius: 16,
-    backgroundColor: '#fff', 
+    backgroundColor: '#fff',
   },
   active: {
     flex: 1

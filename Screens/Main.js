@@ -1,14 +1,27 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, ScrollView } from 'react-native'
 
-import { Header } from '../components/Header'
 import { UpMenu } from '../components/UpMenu'
+import { UserLayout } from '../layouts/UserLayout'
 
 export const Main = () => {
+
+  
+
   return (
-    <View>
-      <Header />
+    <UserLayout>
       <UpMenu />
-    </View>
+      <ScrollView style={s.scroll}>
+        <View >
+          <Text> Text </Text>
+        </View>
+      </ScrollView>
+    </UserLayout>
   )
 }
+
+const s = new StyleSheet.create({
+  scroll: {
+    paddingHorizontal: 24
+  }
+})
