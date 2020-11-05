@@ -5,7 +5,7 @@ export const UpMenu = () => {
 
   return (
     <View style={s.container}>
-      <Text>
+      <Text style={s.title}>
         Меню пользователя
       </Text>
 
@@ -38,5 +38,10 @@ const s = new StyleSheet.create({
   },
   active: {
     flex: 1
+  },
+  title: {
+    fontSize: 24,
+    color: '#333',
+    marginVertical: 24
   }
 })

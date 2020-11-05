@@ -4,9 +4,9 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { AppContext } from './context/appContext'
 
-import { Main } from './screens/Main'
 import { NavBar } from './components/main/NavBar'
 
+import { Main } from './screens/Main'
 import { Settings } from './screens/Settings'
 import { StBook } from './screens/StBook'
 

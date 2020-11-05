@@ -14,7 +14,7 @@ export const MainHeader = props => {
   return (
     <View>
       <TouchableOpacity onPress={ goHome }>
-        Back home
+      <Text>Back home</Text>
       </TouchableOpacity>
       <Text>General header</Text>
     </View>
