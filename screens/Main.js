@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ScrollView, StyleSheet, Text } from 'react-native'
 
 import { UpMenu } from "../components/UpMenu";
 import { InfoComponent } from "../components/upmenu/InfoComponent";
@@ -25,9 +26,26 @@ export const Main = () => {
 
   return (
     <UserLayout>
-      <UpMenu setComponent={setComponent} />
-
-      {content}
+        <ScrollView
+          style={s.container}
+          stickyHeaderIndices={[1]}
+          showsVerticalScrollIndicator={false}
+        >
+          <Text style={s.title}>Меню пользователя</Text>
+          <UpMenu  setComponent={setComponent} />
+          {content}
+        </ScrollView>
     </UserLayout>
   );
 };
+
+const s = new StyleSheet.create({
+  title: {
+    fontSize: 24,
+    color: "#333",
+    marginTop: 24
+  },
+  container: {
+    paddingHorizontal: 24,
+  },
+})

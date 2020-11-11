@@ -10,7 +10,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 
 export const PaymentComponent = (props) => {
   return (
-    <View style={{paddingHorizontal: 24}}>
+    <View>
       <View style={s.payment}>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
           <View style={s.icon}>

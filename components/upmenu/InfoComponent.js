@@ -107,7 +107,6 @@ export const InfoComponent = props => {
 const s = new StyleSheet.create({
   scroll: {
     marginTop: 46,
-    marginHorizontal: 24,
     backgroundColor: "#fff",
     borderRadius: 16,
     // minHeight: 128,

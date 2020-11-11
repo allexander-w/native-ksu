@@ -37,16 +37,16 @@ export const UpMenu = ({ setComponent }) => {
       menu.map((item) => {
         if (item.id === id) {
           return { ...item, active: true };
+        } else {
+          return {...item, active: false}
         }
-        return { ...item, active: false };
       })
-    );
+    )
+    console.log(menu);
   };
 
   return (
-    <View style={s.container}>
-      <Text style={s.title}>Меню пользователя</Text>
-
+    <View >
       <View style={s.menuWrapper}>
         {menu.map((menuItem, i) => {
           return (
@@ -106,11 +106,11 @@ export const UpMenu = ({ setComponent }) => {
 };
 
 const s = new StyleSheet.create({
-  container: {
-    paddingHorizontal: 24,
-  },
+ 
   menuWrapper: {
     flexDirection: "row",
+    backgroundColor: '#F4F1FA',
+    paddingTop: 24
   },
   menuItem: {
     width: 52,
@@ -123,11 +123,7 @@ const s = new StyleSheet.create({
   active: {
     flex: 1,
   },
-  title: {
-    fontSize: 24,
-    color: "#333",
-    marginVertical: 24,
-  },
+  
   activeElem: {
     flexDirection: "row",
     alignItems: "center",
