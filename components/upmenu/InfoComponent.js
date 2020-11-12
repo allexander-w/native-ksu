@@ -87,12 +87,11 @@ export const InfoComponent = props => {
                 {item.active && (
                   <Text
                     style={
-                      (item.id === 2 ? { marginBottom: 40 } : null,
-                      { color: "#9794A9", fontSize: 12, lineHeight: 24 })
+                      (item.id === 2 ? {  paddingBottom: 24 } : null,
+                      { color: "#9794A9", fontSize: 12, lineHeight: 24, })
                     }
                   >
-                    {" "}
-                    {item.desc}{" "}
+                    {item.desc}
                   </Text>
                 )}
               </View>
@@ -106,7 +105,6 @@ export const InfoComponent = props => {
 
 const s = new StyleSheet.create({
   scroll: {
-    marginTop: 46,
     backgroundColor: "#fff",
     borderRadius: 16,
     // minHeight: 128,

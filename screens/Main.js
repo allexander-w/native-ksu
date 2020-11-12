@@ -47,5 +47,6 @@ const s = new StyleSheet.create({
   },
   container: {
     paddingHorizontal: 24,
+    marginBottom: 200
   },
 })

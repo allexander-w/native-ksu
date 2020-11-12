@@ -32,7 +32,6 @@ export const PaymentComponent = (props) => {
 
 const s = new StyleSheet.create({
   payment: {
-    marginTop: 46,
     backgroundColor: "#fff",
     borderRadius: 16,
     padding: 32,

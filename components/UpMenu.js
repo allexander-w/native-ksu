@@ -42,7 +42,6 @@ export const UpMenu = ({ setComponent }) => {
         }
       })
     )
-    console.log(menu);
   };
 
   return (
@@ -110,7 +109,8 @@ const s = new StyleSheet.create({
   menuWrapper: {
     flexDirection: "row",
     backgroundColor: '#F4F1FA',
-    paddingTop: 24
+    paddingTop: 24,
+    paddingBottom: 24
   },
   menuItem: {
     width: 52,

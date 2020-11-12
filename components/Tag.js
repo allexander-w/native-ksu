@@ -3,17 +3,21 @@ import { View, StyleSheet } from 'react-native'
 
 export const Tag = ({ children }) => {
   return (
-    <View style={s.tag}>
+    <View style={style.tag}>
       { children }
     </View>
   )
 }
 
-const s = new StyleSheet.create({
+const style = new StyleSheet.create({
   tag: {
     height: 40,
-    backgroundColor: 'red',
+    backgroundColor: 'rgba(158,109,201, .4)',
     color: '#333',
-    borderRadius: 16
+    borderRadius: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 99
+
   }
 })
