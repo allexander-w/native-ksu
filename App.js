@@ -7,12 +7,15 @@ import { AppContext } from './context/appContext'
 import { NavBar } from './components/main/NavBar'
 
 import { Main } from './screens/Main'
+import { Authenticate } from './screens/Authenticate'
 import { Settings } from './screens/Settings'
 import { StBook } from './screens/StBook'
 
 
 
 export default function App() {
+
+  const [isAuth, setIsAuth] = useState(false)
 
   const [screen, setScreen] = useState(null)
   let tab = screen
@@ -33,11 +36,18 @@ export default function App() {
   }
 
   return (
-    <AppContext.Provider value={{ setScreen, tab}}>
+    <AppContext.Provider value={{ setScreen, tab, setIsAuth }}>
+      { isAuth &&
       <View style={styles.global}>
         {content}
         <NavBar />
       </View>
+      }
+      { !isAuth &&
+      <View style={styles.global}>
+        <Authenticate />
+      </View>
+      }
     </AppContext.Provider>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -7,75 +7,60 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
+import useFetch from '../../hooks/useFetch'
+
+import { Loading } from '../../components/Loading'
 
 import { Tag } from "../Tag";
 
 export const ReadComponent = (props) => {
 
+  const [{ isLoading, response, setResponse }, doFetch] = useFetch('https://ksu-native.firebaseio.com/ksu.json')
+  const [localState, setLocalState] = useState(null)
+
+  useEffect(() => {
+    const opt = { method: 'GET', headers: { 'Content-Type': 'application/json' } }
+    doFetch(opt)
+  }, [])
+
+  useEffect(() => {
+    if (response) {
+      setLocalState(Object.keys(response).map(key => ({ ...response[key], id: key })))
+    }
+  }, [response, setLocalState])
+
+  if (isLoading) {
+    return <Loading />
+  }
+
   return (
     <View>
-      <View style={s.newsItem}>
-        <View style={s.header}>
-          <Text style={s.title}>Read Component!</Text>
-          <FontAwesome5 name="exclamation" size={16} color="#925FBE" />
-        </View>
+      {
+        localState &&
+        localState.map((item, i) => {
+          return (
+            <View key={ i } style={s.newsItem}>
+              <View style={s.header}>
+                <Text style={s.title}>{ item.title }</Text>
+                <FontAwesome5 name="exclamation" size={16} color="#925FBE" />
+              </View>
 
-        <Text style={s.text}>
-          Lorem ipsum — классический текст-«рыба». Является искажённым отрывком
-          из философского трактата Марка Туллия Цицерона «О пределах добра и
-          зла», написанного в 45 году до н. э. на латинском языке, обнаружение
-          сходства приписывается Ричарду МакКлинтоку
-        </Text>
+              <Text style={s.text}>
+                { item.text }
+              </Text>
 
-        <View style={{ marginTop: 64 }}>
-          <Tag>
-            <Text style={{ paddingHorizontal: 16, color: '#925FBE'}}> Tagname </Text>
-          </Tag>
-        </View>
-      </View>
-
-
-      <View style={s.newsItem}>
-        <View style={s.header}>
-          <Text style={s.title}>Read Component!</Text>
-          <FontAwesome5 name="exclamation" size={16} color="#925FBE" />
-        </View>
-
-        <Text style={s.text}>
-          Lorem ipsum — классический текст-«рыба». Является искажённым отрывком
-          из философского трактата Марка Туллия Цицерона «О пределах добра и
-          зла», написанного в 45 году до н. э. на латинском языке, обнаружение
-          сходства приписывается Ричарду МакКлинтоку
-        </Text>
-
-        <View style={{ marginTop: 64 }}>
-          <Tag>
-            <Text style={{ paddingHorizontal: 16, color: '#925FBE'}}> Tagname </Text>
-          </Tag>
-        </View>
-      </View>
+              <View style={{ marginTop: 64 }}>
+                <Tag>
+                  <Text style={{ paddingHorizontal: 16, color: '#925FBE' }}> { item.tag } </Text>
+                </Tag>
+              </View>
+            </View>
+          )
+        })
+      }
 
 
-      <View style={s.newsItem}>
-        <View style={s.header}>
-          <Text style={s.title}>Read Component!</Text>
-          <FontAwesome5 name="exclamation" size={16} color="#925FBE" />
-        </View>
 
-        <Text style={s.text}>
-          Lorem ipsum — классический текст-«рыба». Является искажённым отрывком
-          из философского трактата Марка Туллия Цицерона «О пределах добра и
-          зла», написанного в 45 году до н. э. на латинском языке, обнаружение
-          сходства приписывается Ричарду МакКлинтоку
-        </Text>
-
-        <View style={{ marginTop: 64 }}>
-          <Tag>
-            <Text style={{ paddingHorizontal: 16, color: '#925FBE'}}> Tagname </Text>
-          </Tag>
-        </View>
-      </View>
-     
     </View>
   );
 };
