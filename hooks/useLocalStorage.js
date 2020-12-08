@@ -2,33 +2,26 @@ import { useState, useEffect, useCallback } from 'react'
 import AsyncStorage from '@react-native-community/async-storage'
 
 
-export default ( key, initialValue = '' ) => {
+export default ( key, initialValue = 'ok' ) => {
 
-    const getItem = useCallback( async () => {
-        const value =  await AsyncStorage.getItem( key )
-        setValue( value )
-    }, [key])
+    // const getItem = useCallback( async () => {
+    //     const value =  await AsyncStorage.getItem( key )
+    //     setValue( value )
+    // }, [key])
 
-    const [value, setValue] = useState(initialValue)
+    // const [value, setValue] = useState(initialValue)
 
-    useEffect( ()=>  {
-        getItem()
-    }, [setValue])
+    // useEffect( ()=>  {
+    //     getItem()
+    // }, [setValue])
 
-    useEffect(()=> {
-        const setItem = async () => {
-            await AsyncStorage.setItem( key, value )
-        }
+    // useEffect(()=> {
+    //     const setItem = async () => {
+    //         await AsyncStorage.setItem( key, value )
+    //     }
+    //     setItem()
         
-        if ( value ) {
-            setItem()
-        }
-        
-    }, [ value ])
+    // }, [ value ])
 
-    const clearStorage = async ( ) => {
-        await AsyncStorage.removeItem( key )
-    }
-
-    return [value, setValue, clearStorage ]
+    // return [value, setValue ]
 }

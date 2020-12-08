@@ -10,6 +10,9 @@ import { FontAwesome5 } from "@expo/vector-icons";
 
 export const InfoComponent = props => {
 
+
+  console.log( 'COMPONENT: ', props.localState )
+
   const [items, setItems] = useState([
     {
       title: "Факультет",

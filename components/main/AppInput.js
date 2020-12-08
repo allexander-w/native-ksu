@@ -43,7 +43,7 @@ const s = new StyleSheet.create({
     color: "#9794A9",
   },
   placeholderFocus: {
-    transform: [{ translateY: 12 }],
+    position: "absolute",
     color: "#9794A9",
   },
   inputForm: {

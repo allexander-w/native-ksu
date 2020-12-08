@@ -2,8 +2,9 @@ import React, { useContext, useState, useEffect } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 
-import useLocalStorage from '../hooks/useLocalStorage'
 import useFetch from '../hooks/useFetch'
+
+import { setLocalStorage, getLocalStorage } from '../hooks/localStorage'
 
 import { AppContext } from "../context/appContext";
 import { AppInput } from "../components/main/AppInput";
@@ -15,9 +16,13 @@ export const Authenticate = (props) => {
   const [localState, setLocaleState] = useState( null )
 
   const [{ isLoading, response, setResponse }, doFetch] = useFetch('http://91.228.154.18:8080/api/auth/login')
-  const [token, setToken, clearToken] = useLocalStorage('token')
-  // useLocalStorage('token')
   const { setIsAuth } = useContext(AppContext);
+
+  const test = async () => {
+    setLocalStorage( 'token', 'itisnewtoken')
+    const a = await getLocalStorage( 'token' )
+    console.log( a )
+  }
 
   const login = () => {
     const settings = {
@@ -31,7 +36,6 @@ export const Authenticate = (props) => {
       }
     }
     
-    clearToken()
     doFetch( settings )
   };
 
@@ -40,16 +44,18 @@ export const Authenticate = (props) => {
       setLocaleState( response )
       
       if ( response.token ) {
-        setToken( response.token )
+        setLocalStorage( 'token', response.token )
         setIsAuth(true)
-
       } else {
         setIsAuth(false)
       }
       
+      
       console.log( response )
+      
     }
   }, [response, setLocaleState])
+
 
   return (
     <View style={s.auth}>
@@ -75,6 +81,10 @@ export const Authenticate = (props) => {
         <AppButton
           title={ "Войти" }
           func = { login }
+        />
+        <AppButton
+          title={ "Проверить" }
+          func = { test }
         />
       </View>
     </View>
